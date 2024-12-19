@@ -78,7 +78,35 @@ export default function RegisterForm({ setIsLogin, isLogin } : { setIsLogin: any
       return;
     }
 
-    console.log("Form submitted:", formData);
+    const form = {
+      username: formData.username,
+      password: formData.password,
+      firstname: formData.firstname,
+      lastname: formData.lastname,
+      email: formData.email,
+      role: formData.role
+    };
+
+    try {
+      const response: Response = await fetch("http://localhost:8080/api/users/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json", // Ensure Content-Type is set to application/json
+          },
+          body: JSON.stringify(form),
+        });
+
+        if (!response.ok) {
+          const errorMessage = await response.text();
+          throw new Error(errorMessage);
+        }
+  
+        const data = await response.json();
+        console.log("User registered successfully:", data);
+    } catch (error) { 
+      console.error("Error registering user:", error);
+    }
   };
 
   const changeForm = () => {

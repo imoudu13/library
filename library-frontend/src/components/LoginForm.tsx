@@ -40,7 +40,28 @@ export default function LoginForm({ setIsLogin, isLogin } : { setIsLogin: any; i
       return;
     }
 
-    console.log("Form submitted:", formData);
+    const form = {
+      username: formData.username,
+      password: formData.password
+    };
+
+    try {
+      const response: Response = await fetch("http://localhost/api/users/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-type": "applicaiton/json"
+          },
+          body: JSON.stringify(form)
+        }
+      );
+
+      const data = await response.json();
+
+      console.log("User logged in succesfuly", data);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const changeForm = () => {

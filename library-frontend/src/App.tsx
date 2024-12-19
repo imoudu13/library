@@ -2,7 +2,7 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Auth from "./pages/Auth";
 import "./index.css";
 
-function App() {
+export default function App() {
   return (
     <BrowserRouter>
       <Routes>
@@ -11,5 +11,3 @@ function App() {
     </BrowserRouter>
   );
 }
-
-export default App;

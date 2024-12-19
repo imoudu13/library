@@ -95,4 +95,3 @@ export default function LoginForm({ setIsLogin, isLogin } : { setIsLogin: any; i
     </Card>
   );
 }
-

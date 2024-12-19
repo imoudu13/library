@@ -1,13 +1,15 @@
-import { Routes, Route } from 'react-router-dom';
-import Auth  from './pages/Auth';
-import './App.css';
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import Auth from "./pages/Auth";
+import "./index.css";
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={ <Auth /> }></Route>
-    </Routes>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/auth" element={<Auth />}></Route>
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
